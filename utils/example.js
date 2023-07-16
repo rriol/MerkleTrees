@@ -1,15 +1,17 @@
 const MerkleTree = require('./MerkleTree');
 const niceList = require('./niceList');
 const verifyProof = require('./verifyProof');
+const { bytesToHex } = require('ethereum-cryptography/utils');
 
 // create the merkle tree for the whole nice list
 const merkleTree = new MerkleTree(niceList);
 
 // get the root
 const root = merkleTree.getRoot();
+console.log(root);
 
 // find the proof that norman block is in the list 
-const name = 'Norman Block';
+const name = 'Ricardo Riol';
 const index = niceList.findIndex(n => n === name);
 const proof = merkleTree.getProof(index);
 
